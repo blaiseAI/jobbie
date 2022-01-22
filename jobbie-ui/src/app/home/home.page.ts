@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuotesService } from '../services/quotes.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  constructor(private quotesService: QuotesService) {}
 
-  constructor() {}
-
+  ngOnInit() {
+    this.quotesService.getRandomQuote().subscribe((res) => console.log(res));
+  }
 }
